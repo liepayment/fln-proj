@@ -26,7 +26,7 @@
     <h3>Total: ${{ $total }}</h3>
 </div>
 
-<form action="{{ route('checkout.store') }}" method="POST">
+<form action="{{ route('payment.store') }}" method="POST">
     @csrf
-    <button type="submit">Place Order</button>
+    <button type="submit">Pay with Stripe</button>
 </form>

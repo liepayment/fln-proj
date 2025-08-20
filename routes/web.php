@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,5 +30,9 @@ Route::resource('orders', OrderController::class)->middleware('auth');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index')->middleware('auth');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store')->middleware('auth');
+
+Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store')->middleware('auth');
+Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success')->middleware('auth');
+Route::get('/payment/cancel', [PaymentController::class, 'cancel'])->name('payment.cancel')->middleware('auth');
 
 require __DIR__.'/auth.php';
